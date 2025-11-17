@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CaseCrafts — Trendy Mobile Cases for iPhone, Samsung & More</title>
+  <meta name="description" content="Shop stylish phone cases — slim, rugged & custom designs. Fast delivery, secure checkout, 30-day returns." />
+  <meta name="keywords" content="phone cases, mobile backcases, iPhone cases, Samsung cases, custom phone case, CaseCrafts" />
+
+  <!-- Structured data: example Product & Store (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"Store",
+        "name":"CaseCrafts",
+        "url":"https://example.com",
+        "description":"Trendy, protective & affordable phone cases.",
+        "telephone":"+91-90000-00000"
+      },
+      {
+        "@type":"Product",
+        "name":"Slim Matte Case — iPhone 14",
+        "image":"https://via.placeholder.com/800x800?text=Slim+Matte",
+        "description":"Featherweight protection with a silky matte finish.",
+        "sku":"CC-SLIM-IPH14",
+        "brand":{"@type":"Brand","name":"CaseCrafts"},
+        "offers":{
+          "@type":"Offer",
+          "priceCurrency":"INR",
+          "price":"799",
+          "availability":"https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --accent:#ff6b6b;
+      --accent-2:#1f6feb;
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --gap:8px; /* 8px spacing grid */
+      --radius:12px;
+      --container:1100px;
+      --shadow: 0 6px 24px rgba(15,23,42,0.08);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fdf2f8,#ffffff), radial-gradient(circle at 10% 10%, rgba(255,180,200,0.45) 0%, rgba(255,180,200,0) 60%), radial-gradient(circle at 90% 30%, rgba(180,220,255,0.5) 0%, rgba(180,220,255,0) 65%), repeating-linear-gradient(45deg, rgba(255,220,230,0.25) 0 10px, rgba(255,255,255,0.25) 10px 20px); background-blend-mode:screen,multiply;color:#0f172a;line-height:1.4}
+    .container{max-width:var(--container);margin:0 auto;padding:24px}
+    /* Topbar */
+    .topbar{background:#111827;color:#fff;padding:6px 12px;font-size:14px;text-align:center}
+    .topbar strong{color:var(--accent-2)}
+    header{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(4px);z-index:40;border-bottom:1px solid #eef2ff}
+    .nav{display:flex;align-items:center;gap:12px;padding:12px 20px;max-width:var(--container);margin:0 auto}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+    .logo .mark{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff}
+    .search{flex:1;display:flex;align-items:center;gap:8px}
+    .search input{width:100%;padding:10px;border-radius:10px;border:1px solid #e6eef8}
+    .controls{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;border:none;cursor:pointer}
+    .btn.secondary{background:#fff;color:var(--accent-2);border:1px solid #eef2ff}
+    nav .model-select{padding:8px 10px;border-radius:10px;border:1px solid #eef2ff}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;padding:32px 20px}
+    .hero .copy h1{font-size:28px;margin:0 0 12px}
+    .hero .copy p{color:var(--muted);margin:0 0 16px}
+    .hero .ctas{display:flex;gap:12px}
+    .hero .mock{border-radius:18px;box-shadow:var(--shadow);padding:18px;background:linear-gradient(180deg,#fff,#fbfbff);display:flex;align-items:center;justify-content:center}
+    .phone-mock{width:300px;height:600px;border-radius:36px;background:linear-gradient(180deg,#e6eefc,#fff);display:flex;align-items:center;justify-content:center;border:8px solid #f8fafc}
+
+    /* Grid / Shop */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+    .card{background:#fff;border-radius:12px;padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card .img{height:220px;border-radius:10px;background:linear-gradient(135deg,#eee,#ddd);display:flex;align-items:center;justify-content:center;font-weight:700;color:#9aa4b2}
+    .card h3{margin:10px 0 6px;font-size:16px}
+    .price-row{display:flex;justify-content:space-between;align-items:center}
+    .stars{color:#fbbf24}
+
+    /* Product page */
+    .product-page{display:grid;grid-template-columns:420px 1fr;gap:20px}
+    .gallery{display:flex;flex-direction:column;gap:10px}
+    .gallery .main{height:420px;border-radius:14px;background:#f3f4f6;display:flex;align-items:center;justify-content:center}
+    .thumbnails{display:flex;gap:8px}
+    .swatches{display:flex;gap:8px;margin:12px 0}
+    .swatch{width:40px;height:40px;border-radius:10px;border:2px solid #fff;box-shadow:0 4px 10px rgba(2,6,23,0.06)}
+
+    /* Sticky add-to-cart (mobile) */
+    .mobile-sticky{position:fixed;left:12px;right:12px;bottom:12px;padding:12px;border-radius:14px;background:#fff;box-shadow:0 12px 30px rgba(2,6,23,0.12);display:none;align-items:center;justify-content:space-between}
+
+    /* Footer */
+    footer{padding:28px 20px;background:#0f172a;color:#fff;margin-top:28px}
+
+    /* Utilities */
+    .badge{display:inline-block;padding:6px 8px;border-radius:999px;background:#f1f5f9;color:#0f172a;font-weight:600}
+    .muted{color:var(--muted)}
+
+    /* Responsive */
+    @media(max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .product-page{grid-template-columns:1fr}
+      .controls .desktop-only{display:none}
+    }
+    @media(max-width:640px){
+      .nav{padding:10px}
+      .logo{font-size:16px}
+      .card .img{height:180px}
+      .mobile-sticky{display:flex}
+    }
+
+    /* Modal / overlays */
+    .modal{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal .panel{background:#fff;padding:18px;border-radius:12px;max-width:720px;width:100%}
+
+    /* Simple form */
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid #e6eef8;width:100%}
+  </style>
+</head>
+<body>
+  <div class="topbar">Free shipping on orders over ₹999 • 30-day returns • 1-year warranty on selected cases</div>
+  <header>
+    <div class="nav">
+      <div class="logo" onclick="navigateTo('home')" style="cursor:pointer">
+        <div class="mark">CC</div>
+        <div>CaseCrafts</div>
+      </div>
+      <div class="search">
+        <select id="modelFilter" class="model-select" aria-label="Select phone model">
+          <option value="all">All models</option>
+          <option value="iphone-14">iPhone 14</option>
+          <option value="galaxy-s23">Galaxy S23</option>
+          <option value="oneplus-11">OnePlus 11</option>
+        </select>
+        <input id="searchInput" placeholder="Search cases, materials, styles..." />
+      </div>
+      <div class="controls">
+        <button class="btn secondary desktop-only" onclick="openEmailCapture()">Get 10% Off</button>
+        <button class="btn" onclick="navigateTo('cart')">Cart (<span id="cartCount">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="app">
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <div class="copy">
+          <span class="badge">New drops</span>
+          <h1>Protect Your Phone. Style Your Life.</h1>
+          <p>Cases that are slim, strong and designed for everyday life. Shop bestselling designs or customize your own photo case.</p>
+          <div class="ctas">
+            <button class="btn" onclick="navigateTo('shop')">Shop Bestsellers</button>
+            <button class="btn secondary" onclick="navigateTo('customize')">Customize Your Case</button>
+          </div>
+
+          <div style="margin-top:18px;color:var(--muted)">
+            <strong>Popular materials:</strong> Silicone • Hard TPU • Vegan Leather
+          </div>
+        </div>
+
+        <div class="mock">
+          <div class="phone-mock">
+            <div style="text-align:center">
+              <div style="font-size:18px;font-weight:700">Slim Matte</div>
+              <div style="color:var(--muted);margin-top:8px">iPhone 14 — ₹799</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 style="margin-top:18px">Bestsellers</h2>
+      <div class="grid" id="productGrid"></div>
+
+      <h2 style="margin-top:18px">Why customers love CaseCrafts</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+        <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);min-width:220px">30-day returns</div>
+        <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);min-width:220px">Secure checkout</div>
+        <div style="background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);min-width:220px">Fast delivery</div>
+      </div>
+    </section>
+
+    <!-- SHOP (simple SPA) -->
+    <section id="shop" style="display:none">
+      <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <h2>Shop</h2>
+        <div>
+          <label class="muted">Filter:</label>
+          <select id="styleFilter" onchange="renderProducts()">
+            <option value="all">All styles</option>
+            <option value="slim">Slim Matte</option>
+            <option value="rugged">Rugged Armor</option>
+            <option value="custom">PhotoPrint</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid" id="shopGrid"></div>
+    </section>
+
+    <!-- PRODUCT detail (rendered into) -->
+    <section id="productDetail" style="display:none"></section>
+
+    <!-- CART / CHECKOUT -->
+    <section id="cart" style="display:none">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <div style="margin-top:12px;display:flex;gap:12px;align-items:center">
+        <div style="flex:1">
+          <h3>Checkout</h3>
+          <form id="checkoutForm" onsubmit="placeOrder(event)">
+            <label>Name</label>
+            <input id="c_name" required />
+            <label>Phone</label>
+            <input id="c_phone" required />
+            <label>Address</label>
+            <textarea id="c_address" rows="3" required></textarea>
+            <label>Payment</label>
+            <select id="paymentMethod">
+              <option value="upi">UPI</option>
+              <option value="card">Card</option>
+              <option value="wallet">Wallet</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+            <div style="margin-top:10px"><button class="btn" type="submit">Place order</button></div>
+          </form>
+        </div>
+        <div style="width:320px;background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)">
+          <h4>Order summary</h4>
+          <div id="orderSummary"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / Policies / Contact / Blog simple placeholders -->
+    <section id="about" style="display:none">
+      <h2>About CaseCrafts</h2>
+      <p>We design protective, stylish and affordable phone cases made to last. Our mission is to add personality to everyday tech.</p>
+    </section>
+
+    <section id="policies" style="display:none">
+      <h2>Shipping & Returns</h2>
+      <p>Standard shipping: 3–7 business days within India. 30-day returns for unused items. 1-year warranty on manufacturing defects for select cases.</p>
+    </section>
+
+    <section id="faqs" style="display:none">
+      <h2>FAQs</h2>
+      <p><strong>Do your cases fit my exact model?</strong> Each product lists compatible models; use the phone-model dropdown before buying.</p>
+      <p><strong>How long to ship?</strong> Standard: 3–7 business days in India.</p>
+    </section>
+
+    <section id="contact" style="display:none">
+      <h2>Contact</h2>
+      <p>Tap to call: <a href="tel:+919000000000">+91-90000-00000</a></p>
+      <p>Email: support@casecrafts.example</p>
+    </section>
+
+    <section id="blog" style="display:none">
+      <h2>Blog</h2>
+      <article style="background:#fff;padding:12px;border-radius:12px;box-shadow:var(--shadow)">
+        <h3>Top 5 case trends — 2025</h3>
+        <p class="muted">Quick styling & protection tips</p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- mobile sticky add to cart -->
+  <div class="mobile-sticky" id="mobileSticky" style="display:none">
+    <div>
+      <div id="stickyTitle" style="font-weight:700">Slim Matte</div>
+      <div id="stickyPrice" class="muted">₹799</div>
+    </div>
+    <div>
+      <button class="btn" onclick="addToCartFromSticky()">Add to cart</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>
+        <div style="font-weight:700">CaseCrafts</div>
+        <div class="muted">Trendy phone cases • Secure checkout • 30-day returns</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div>Follow us</div>
+        <div style="display:flex;gap:8px"><a href="#">Instagram</a><a href="#">X</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <div class="modal" id="modalEmail">
+    <div class="panel">
+      <h3>Get 10% Off — Join our list</h3>
+      <p>Enter your email and get a 10% coupon for first order.</p>
+      <input id="emailInput" placeholder="you@domain.com" />
+      <div style="margin-top:12px;text-align:right"><button class="btn" onclick="saveEmail()">Get 10% Off</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalQuickView">
+    <div class="panel" id="quickViewPanel"></div>
+  </div>
+
+  <script>
+    /* Sample product data */
+    const PRODUCTS = [
+      {id:1,slug:'slim-matte-iph14',title:'Slim Matte — iPhone 14',price:799,style:'slim',model:'iphone-14',material:'Silicone',sku:'CC-SLIM-IPH14',rating:4.6,images:['https://images.unsplash.com/photo-1603898037225-1b37c27dc799','https://images.unsplash.com/photo-1603898078143-81857232ece2']},
+      {id:2,slug:'rugged-armor-s23',title:'Rugged Armor — Galaxy S23',price:1299,style:'rugged',model:'galaxy-s23',material:'Hard TPU',sku:'CC-RUG-S23',rating:4.7,images:['https://images.unsplash.com/photo-1555617154-2d3d4f609f58','https://images.unsplash.com/photo-1585386959984-a4155223f2d0']},
+      {id:3,slug:'photoprint-std',title:'PhotoPrint Custom Case',price:999,style:'custom',model:'all',material:'TPU',sku:'CC-PHOTO-STD',rating:4.5,images:['https://images.unsplash.com/photo-1517336714731-489689fd1ca8','https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f']}
+    ];
+
+    /* Routing */
+    function navigateTo(page){
+      const sections=['home','shop','productDetail','cart','about','policies','faqs','contact','blog','customize'];
+      sections.forEach(s=>{const el=document.getElementById(s); if(el) el.style.display=(s===page|| (s==='shop' && page==='shop'))? 'block':'none'});
+      if(page==='home') renderHome();
+      if(page==='shop') renderShop();
+      if(page==='cart') renderCart();
+      if(page==='customize') openQuickView({title:'Customize Your Case',content:'<p>Upload an image to print — works best with 300 DPI images. (Demo only)</p>'})
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    /* Render grids */
+    function renderHome(){
+      const grid=document.getElementById('productGrid');grid.innerHTML='';
+      PRODUCTS.forEach(p=>{if(grid.children.length<6){grid.appendChild(createCard(p))}});
+    }
+    function renderShop(){
+      document.getElementById('shopGrid').innerHTML='';
+      renderProducts();
+    }
+    function renderProducts(){
+      const shopGrid=document.getElementById('shopGrid'); shopGrid.innerHTML='';
+      const style=document.getElementById('styleFilter').value;
+      const model=document.getElementById('modelFilter').value;
+      const q=document.getElementById('searchInput').value.toLowerCase();
+      PRODUCTS.filter(p=>{
+        if(style!=='all' && p.style!==style) return false;
+        if(model!=='all' && p.model!==model && p.model!=='all') return false;
+        if(q && !(p.title.toLowerCase().includes(q)||p.material?.toLowerCase().includes(q))) return false;
+        return true;
+      }).forEach(p=>shopGrid.appendChild(createCard(p)));
+    }
+
+    function createCard(p){
+      const card=document.createElement('div');card.className='card';
+      const img=document.createElement('img');img.className='img';img.src=p.images[0];img.alt=p.title;card.appendChild(img);
+      const h3=document.createElement('h3');h3.textContent=p.title;card.appendChild(h3);
+      const desc=document.createElement('div');desc.className='muted';desc.textContent=p.material;card.appendChild(desc);
+      const row=document.createElement('div');row.className='price-row';
+      const price=document.createElement('div');price.style.fontWeight=700;price.textContent=`₹${p.price}`;
+      const actions=document.createElement('div');
+      const add=document.createElement('button');add.className='btn';add.textContent='Add';add.onclick=()=>{addToCart(p.id)};
+      const quick=document.createElement('button');quick.className='btn secondary';quick.textContent='Quick view';quick.onclick=()=>openQuickViewProduct(p);
+      actions.appendChild(add);actions.appendChild(quick);
+      row.appendChild(price);row.appendChild(actions);
+      card.appendChild(row);
+      const stars=document.createElement('div');stars.className='stars muted';stars.textContent=`★ ${p.rating}`;card.appendChild(stars);
+      return card;
+    }
+
+    /* Quick view / product detail */
+    function openQuickViewProduct(p){
+      const panel=document.getElementById('quickViewPanel');
+      panel.innerHTML=`<div style="display:flex;gap:12px;flex-wrap:wrap"><div style='flex:1;min-width:240px'><div style='height:260px;background:#f3f4f6;border-radius:10px;display:flex;align-items:center;justify-content:center'>${p.title}</div></div><div style='flex:1;min-width:220px'><h3>${p.title}</h3><p class='muted'>${p.material} • SKU: ${p.sku}</p><p style='font-weight:700'>₹${p.price}</p><div style='margin-top:8px'><button class='btn' onclick='addToCart(${p.id});closeModal("modalQuickView")'>Add to cart</button></div></div></div>`;
+      openModal('modalQuickView');
+    }
+    function openQuickView(opts){openModal('modalQuickView');document.getElementById('quickViewPanel').innerHTML=`<h3>${opts.title}</h3>${opts.content||''}`}
+
+    function openModal(id){document.getElementById(id).style.display='flex'}
+    function closeModal(id){document.getElementById(id).style.display='none'}
+
+    /* CART logic (simple local state) */
+    const CART = {items:[]};
+    function addToCart(id){
+      const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
+      const existing=CART.items.find(i=>i.id===id);
+      if(existing){existing.qty+=1}else{CART.items.push({id:p.id,title:p.title,price:p.price,qty:1})}
+      updateCartCount();
+      renderCart();
+      showToast('Added to cart');
+    }
+    function addToCartFromSticky(){const id=1;addToCart(id)}
+    function updateCartCount(){const count=CART.items.reduce((s,i)=>s+i.qty,0);document.getElementById('cartCount').textContent=count}
+    function renderCart(){navigateTo('cart');const el=document.getElementById('cartItems');el.innerHTML=''; if(CART.items.length===0){el.innerHTML='<p>Your cart is empty</p>';document.getElementById('orderSummary').innerHTML=''} else {CART.items.forEach(it=>{const row=document.createElement('div');row.style.display='flex';row.style.justifyContent='space-between';row.style.padding='8px 0';row.innerHTML=`<div><strong>${it.title}</strong><div class='muted'>Qty: ${it.qty}</div></div><div>₹${it.price*it.qty}</div>`;el.appendChild(row)});document.getElementById('orderSummary').innerHTML=`<div>Items: ${CART.items.length}</div><div>Total: ₹${CART.items.reduce((s,i)=>s+i.price*i.qty,0)}</div>`}}
+
+    function placeOrder(e){e.preventDefault();const name=document.getElementById('c_name').value;const phone=document.getElementById('c_phone').value;const addr=document.getElementById('c_address').value; if(CART.items.length===0){alert('Your cart is empty');return}
+      // Demo: create a fake confirmation and clear cart
+      const orderId='CC'+Math.floor(Math.random()*900000+100000);
+      alert(`Thank you ${name}! Your order ${orderId} is confirmed. We sent a confirmation email (demo).`);
+      // clear
+      CART.items=[];updateCartCount();renderCart();navigateTo('home');
+    }
+
+    function showToast(msg){const t=document.createElement('div');t.textContent=msg;t.style.position='fixed';t.style.left='50%';t.style.bottom='20px';t.style.transform='translateX(-50%)';t.style.background='#111827';t.style.color='#fff';t.style.padding='10px 14px';t.style.borderRadius='8px';t.style.zIndex=2000;document.body.appendChild(t);setTimeout(()=>t.remove(),1600)}
+
+    /* Email capture */
+    function openEmailCapture(){openModal('modalEmail')}
+    function saveEmail(){const e=document.getElementById('emailInput').value; if(!e) return alert('Enter email'); closeModal('modalEmail'); showToast('Coupon sent to '+e)}
+
+    /* Init */
+    document.getElementById('searchInput').addEventListener('input',()=>{renderProducts()});
+    document.getElementById('modelFilter').addEventListener('change',()=>{renderProducts()});
+    renderHome();
+
+    // exit-intent coupon (desktop)
+    let exitShown=false;document.addEventListener('mouseout',e=>{if(e.clientY<10 && !exitShown){openEmailCapture(); exitShown=true}});
+
+    // sample hero headlines + taglines (deliverable as data)
+    const HERO_HEADLINES=["Protect Your Phone. Style Your Life.","Cases That Turn Heads — Built to Protect.","Slim. Strong. Stylish — Find Your Perfect Case.","Designed for Drops, Made for Style.","Your Phone’s Best Outfit."];
+    const TAGLINES=["Slim. Durable. Yours.","Drop-tested, Style-approved.","Protective covers, playful looks.","Made for your pocket and your vibe.","Express yourself — one case at a time.","Bold colors. Quiet protection.","Grip, guard, and go.","Custom prints in 2 minutes."]
+
+    // SEO templates (examples)
+    const SEO = {
+      homeTitle: 'CaseCrafts — Trendy Mobile Cases for iPhone, Samsung & More',
+      homeMeta: 'Shop stylish phone cases — slim, rugged & custom designs. Fast delivery, secure checkout, 30-day returns.',
+      productTitleTemplate: (p)=>`${p.title} | CaseCrafts`,
+      productMetaTemplate: (p)=>`${p.title} — ${p.material}. Buy now from CaseCrafts. Free shipping over ₹999.`
+    }
+
+    // Sample CSV export helper (download a CSV of products)
+    function downloadCSV(){
+      const rows=[['title','sku','price','model','material','description']];
+      PRODUCTS.forEach(p=>rows.push([p.title,p.sku,p.price,p.model,p.material,'Short description']));
+      const csv=rows.map(r=>r.map(cell=>`"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob=new Blob([csv],{type:'text/csv'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='products.csv';a.click();URL.revokeObjectURL(url);
+    }
+
+    // quick dev helper to show product detail (navigating by slug)
+    function showProduct(slug){const p=PRODUCTS.find(x=>x.slug===slug); if(!p) return alert('Product not found'); renderProductPage(p)}
+
+    function renderProductPage(p){
+      navigateTo('productDetail');
+      const el=document.getElementById('productDetail');
+      el.style.display='block';
+      el.innerHTML=`<div class='product-page'><div class='gallery'><div class='main'>${p.title}</div><div class='thumbnails'>${p.images.map(img=>`<div style='width:80px;height:80px;border-radius:8px;background:#f3f4f6;display:flex;align-items:center;justify-content:center'>thumb</div>`).join('')}</div></div><div><h2>${p.title}</h2><div class='muted'>${p.material} • SKU: ${p.sku}</div><div style='font-weight:800;font-size:20px;margin-top:8px'>₹${p.price}</div><div class='swatches'><div class='swatch' title='Black' style='background:#111'></div><div class='swatch' title='Pink' style='background:#fce7f3'></div><div class='swatch' title='Blue' style='background:#e6f2ff'></div></div><p class='muted'>Estimated delivery: 3–7 business days</p><div style='margin-top:12px;display:flex;gap:12px'><button class='btn' onclick='addToCart(${p.id})'>Add to cart</button><button class='btn secondary' onclick='openQuickView({title:` + "'" + p.title + "'" + `,content:"<p>Customize options coming soon.</p>"})'>Customize</button></div><h3 style='margin-top:18px'>Customer reviews</h3><div class='muted'>★★★★★ 4.6 — "Great fit and finish"</div><h3 style='margin-top:18px'>Related products</h3><div style='display:flex;gap:8px'>${PRODUCTS.filter(x=>x.id!==p.id).map(r=>`<div style='background:#fff;padding:8px;border-radius:8px;min-width:140px'>${r.title}<div style='font-weight:700'>₹${r.price}</div></div>`).join('')}</div></div></div>`;
+    }
+
+    // For demo: show first product detail if user loads with #product
+    if(location.hash.startsWith('#product=')){const slug=location.hash.split('=')[1]; setTimeout(()=>showProduct(slug),200)}
+  </script>
+</body>
+</html>
